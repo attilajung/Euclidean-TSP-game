@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TSP Challenge</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <h1>TSP <span>Challenge</span></h1>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="label">Distance</span>
+                    <span class="value" id="distance-display">0.00</span>
+                </div>
+                <div class="stat-item" id="optimal-stats" style="transition: opacity 0.5s;">
+                    <span class="label">Goal</span>
+                    <span class="value" id="optimal-distance-display">---</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">Points</span>
+                    <span class="value" id="point-count">0</span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="canvas-container">
+                <canvas id="game-canvas"></canvas>
+                <div id="overlay-message" class="hidden">
+                    <h2>Complete!</h2>
+                    <p>Total Distance: <span id="final-distance"></span></p>
+                    <button id="play-again-btn">Play Again</button>
+                </div>
+            </div>
+        </main>
+
+        <div class="controls">
+            <div class="settings">
+                <label for="point-count-input">Points: <span id="point-count-val">10</span></label>
+                <input type="range" id="point-count-input" min="4" max="50" value="10">
+            </div>
+            <button id="hint-btn" class="secondary" style="color: #facc15; border-color: #facc15;">Hint</button>
+            <button id="clear-edges-btn" class="secondary" style="border-color: #ef4444; color: #ef4444;">Clear
+                Edges</button>
+            <button id="new-game-btn" class="secondary">New Game</button>
+            <p class="instructions">Select point -> Click another to connect. Green = 2 connections.</p>
+        </div>
+    </div>
+    <script src="tsp-solver.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

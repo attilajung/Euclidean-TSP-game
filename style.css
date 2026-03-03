@@ -1,0 +1,230 @@
+:root {
+    --bg-color: #0f172a;
+    --canvas-bg: #1e293b;
+    --primary-color: #38bdf8;
+    /* Sky blue */
+    --accent-color: #f472b6;
+    /* Pink */
+    --text-color: #e2e8f0;
+    --success-color: #4ade80;
+    --font-family: 'Outfit', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#app {
+    width: 100%;
+    max-width: 800px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+h1 span {
+    color: var(--primary-color);
+}
+
+.stats {
+    display: flex;
+    gap: 20px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.stat-item .label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #94a3b8;
+    letter-spacing: 0.5px;
+}
+
+.stat-item .value {
+    font-size: 1.25rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.canvas-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: var(--canvas-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+canvas {
+    display: block;
+    cursor: crosshair;
+}
+
+#overlay-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(4px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#overlay-message.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#overlay-message.hidden {
+    display: none;
+}
+
+#overlay-message h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--success-color);
+}
+
+#overlay-message p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 24px;
+    border-radius: 8px;
+    border: none;
+    font-family: var(--font-family);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: var(--primary-color);
+    color: #0f172a;
+    font-size: 1rem;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.1);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+#clear-edges-btn:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+#hint-btn:hover {
+    background-color: rgba(250, 204, 21, 0.1);
+}
+
+button.secondary {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 8px 16px;
+    font-size: 0.9rem;
+}
+
+button.secondary:hover {
+    background-color: rgba(56, 189, 248, 0.1);
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.settings {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.settings input[type="range"] {
+    accent-color: var(--primary-color);
+}
+
+.instructions {
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+@media (max-width: 600px) {
+    .stats {
+        gap: 10px;
+    }
+
+    .stat-item .value {
+        font-size: 1rem;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .controls>* {
+        margin-bottom: 10px;
+    }
+}
